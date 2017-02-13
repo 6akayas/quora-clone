@@ -1,0 +1,9 @@
+<h1>Temp User!</h1>
+
+<h2>User</h2>
+<p><%= current_user.email %></p>
+<p><%= current_user.password %></p>
+
+<form action="/logout" method="post">
+	<input type="submit" value="logout">
+</form>

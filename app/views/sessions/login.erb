@@ -1,0 +1,13 @@
+<!-- login form -->
+
+<h1>Login</h1>
+
+<div id="error_msg">
+	<%= @error %>
+</div>
+
+<form action='/sessions' method="POST" id="login-form">
+    <input type=text placeholder="Email" name="email"><br>
+    <input type=password placeholder="Password" name="password"></br>
+    <input type=submit value="Log In">
+</form>

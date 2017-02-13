@@ -1,2 +1,27 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<!-- signupform -->
+
+<h2>Sign up for an account!</h2>
+<div id="error_msg">
+	<%= @error %>
+</div>
+<form method="post" action="/users" id="signup-form">
+  <input type=text placeholder="Name" name="user[name]"><br>
+    <input type=text placeholder="Email" name="user[email]"><br>
+    <input type=password placeholder="Password" name="user[password]"></br>
+    <input type=submit value="Sign up">
+</form>
+
+<!-- login form -->
+
+<!-- <h1>Login</h1>
+<form action="'/session/new'" method="POST" id="login-form">
+	<div>
+		<input type="email" placeholder="Email" name="user[email]" value="agaegaw@email.com" >
+	</div>
+	<div>
+		<input type="password" placeholder="Password" name="user[password]" value="123455" >
+	</div>
+	<div>
+		<input type="submit" value="Sign Up">
+	</div>
+</form> -->
