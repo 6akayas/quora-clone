@@ -1,28 +1,41 @@
 enable :sessions
 
 #index
-get '/users/questions' do
+post '/users/questions' do
   @questions = Question.all
   erb :"questions/index"
 end
 
-#show only users questions
-get '/users/:id/questions/:id/show' do
-  # erb :profile question page
+# redirection for show
+post '/users/:id/questions/:id' do
+  redirect "/users/#{session[:id]}/questions/#{session[:id]}/show"
 end
 
-#new
+#show only users questions
+get '/users/:id/questions/:id/show' do
+  erb :"questions/each_question"
+end
+
+# redirection for new question
+post '/users/:id/questions/:id/new' do
+  redirect "/users/#{session[:id]}/questions/new"
+end
+
+#new question
 get '/users/:id/questions/new' do
-  # erb : questions form
+  @questions = Question.find_by(id: params[:id])
+  erb :"questions/each_question"
 end
 
 #create
 post 'users/:id/questions' do
-  q = User.questions.new()
-  if q.save
-    # erb : dashboard
+  @questions = current_user.questions.create(content: params[:question])
+  if @questions.save
+    redirect "/users/#{session[:id]}/questions/#{session[:id]}/show"
+    #redirects to show only users question erb
   else
-    #erb : question form again or error msg
+    @error = "Invalid question format"
+    redirect "/users/#{session[:id]}/questions/new"
   end
 end
 
