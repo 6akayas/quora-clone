@@ -7,6 +7,7 @@ end
 
 # show
 get '/users/:id' do
+  #erb : profile page 
 end
 
 # new sign up
@@ -38,7 +39,9 @@ post '/users/:id' do
 	redirect to '/users/:id'
 end
 
+
 # delete
-delete '/users/:id' do
-  erb :"sessions/temp"
-end
+# delete '/users/:id' do
+#   session[:id] = nil
+#   erb :"sessions/temp"
+# end
