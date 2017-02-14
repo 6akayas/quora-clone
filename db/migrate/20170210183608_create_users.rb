@@ -9,3 +9,5 @@ class CreateUsers < ActiveRecord::Migration
 		end
 	end
 end
+
+#maybe add in sessions token column

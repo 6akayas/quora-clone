@@ -1,0 +1,11 @@
+
+<!-- Make it a page that connects to a user's question -->
+<form><input ID="back-btn" type="button" value="Back" onClick="history.go(-1);return true;"></FORM>
+
+<h2> Question </h2>
+
+<div id="question-each">
+<% @questions.each do |question| %>
+<a href=<%= question_url(question)%>><%= question.title %><br></a>
+<%end%>
+</div>

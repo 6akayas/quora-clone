@@ -1,2 +1,30 @@
- <!-- dashboard for signed in users  -->
+<!-- dashboard for signed in users, question-index as landing dashboard page  -->
 <h1>Session dashboard page</h1>
+
+<!-- Question form -->
+<h3>All Questions</h3>
+<form action='/users/:id/questions/:id/new' method="POST" id="question-add">
+    <input type=text placeholder=" Question" name=" question"><br>
+    <button type='submit'>Submit</button>
+</form>
+
+<!-- Profile button -->
+<form action='/users/:id' method="post">
+    <input name="profile" type='hidden' value='post'/>
+    <button type='submit'>Profile</button>
+</form>
+
+<!-- question index -->
+<form action='/users/questions' method="post">
+    <input name="question-index" type='hidden' value='post'/>
+    <button type='submit'>All question</button>
+</form>
+
+<!-- log out button  -->
+<form action='/sessions/:id' method="post">
+    <input name="_method" type='hidden' value='delete'/>
+    <button type='submit'>Log Out</button>
+</form>
+
+<!-- back button -->
+<FORM><INPUT ID="back-btn" Type="button" VALUE="Back" onClick="history.go(-1);return true;"></FORM>
