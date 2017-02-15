@@ -7,4 +7,17 @@
 <h2> Question </h2>
 <%= selected_quest.body %> <br /><br />
 
+<h3>Add Answer</h3>
+<form action='/questions/<%=@question.id%>/answers'method="POST" id="answer-add">
+    <input type=text placeholder="What's the answer?" name="a_title"><br>
+    <input type=text placeholder="Write down further details" name="answer_content"><br>
+    <button type='submit'>Submit</button>
+</form>
+
+<% @answers.each do |answer| %>
+<h3> Answer:</h3>
+<%= answer.body%><br></a>
+<%end%>
+
+
 <form><input ID="back-btn" type="button" value="Back" onClick="history.go(-1);return true;"></FORM>

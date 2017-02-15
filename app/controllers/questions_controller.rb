@@ -8,6 +8,7 @@ end
 
 #show only users questions
 get '/users/:id/questions/:id/show' do
+  @answers = Answer.all 
   @questions = Question.all
   @question = Question.find_by(id: params[:id])
     erb :"questions/each_question"

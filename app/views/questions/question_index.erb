@@ -10,3 +10,7 @@
 <% @questions.each do |question| %>
 <a href=/users/<%=question.user_id %>/questions/<%=question.id%>/show><%= question.title%><br></a>
 <%end%>
+
+<br />
+
+<form><input ID="back-btn" type="button" value="Back" onClick="history.go(-1);return true;"></FORM>
