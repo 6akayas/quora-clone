@@ -1,16 +1,8 @@
 <!-- dashboard for signed in users, question-index as landing dashboard page  -->
-<h1>Session dashboard page</h1>
+<h1>User dashboard page</h1>
 
-<!-- Question form -->
-<h3>All Questions</h3>
-<form action='/users/:id/questions/:id/new' method="POST" id="question-add">
-    <input type=text placeholder=" Question" name=" question"><br>
-    <button type='submit'>Submit</button>
-</form>
-
-<!-- Profile button -->
-<form action='/users/:id' method="post">
-    <input name="profile" type='hidden' value='post'/>
+<!-- Profile button, WORKING DONT TOUCH -->
+<form action="/users/:id" method="post">
     <button type='submit'>Profile</button>
 </form>
 

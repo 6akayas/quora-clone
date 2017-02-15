@@ -2,29 +2,30 @@ enable :sessions
 
 #login in render log in form
 get '/sessions/new' do
-	erb :"sessions/login"
+    erb :"sessions/login"
 end
 
 #creating/finding new sessions for new user
 post '/sessions' do
-	current_user = User.find_by(email: params[:email])
-	if current_user && current_user.authenticate(params[:password])
-		session[:id] = current_user.id
-		redirect "/sessions/#{session[:id]}/dashboard"
-	 else
-		 redirect '/'
-	end
+    current_user = User.find_by(email: params[:email])
+    if current_user && current_user.authenticate(params[:password])
+        session[:id] = current_user.id
+        redirect "/sessions/#{session[:id]}/dashboard"
+    else
+        redirect '/'
+    end
 end
 
-#redirect from /sessions for id, user dashboard
+#redirect from /sessions for id, user dashboard(question index)
 get '/sessions/:id/dashboard' do
-erb :"sessions/dashboard"
+    @questions = Question.all
+    erb :"questions/question_index"
 end
 
-#logout
+#logout - working
 delete '/sessions/:id' do
-	session.clear
-	redirect '/sessions/new'
+    session.clear
+    redirect '/sessions/new'
 end
 
 #authenticating already signed up user

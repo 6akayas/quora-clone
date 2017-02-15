@@ -5,22 +5,17 @@ get '/users' do
   @users = User.all
 end
 
-# redirection for show
-post '/users/:id' do
-  redirect "/users/#{session[:id]}/profile"
-end
-
 # show
 get '/users/:id/profile' do
-  erb :"users/profile"
+erb :"users/index"
 end
 
 # new sign up
 get '/users/new' do
-	erb :'static/index'
+erb :"static/index"
 end
 
-# create
+# create sign up
 post '/users' do
 	user = User.new(params[:user])
   if user.save
@@ -42,11 +37,4 @@ end
 # # update
 # post '/users/:id' do
 # 	redirect to '/users/:id'
-# end
-
-
-# delete
-# delete '/users/:id' do
-#   session[:id] = nil
-#   erb :"sessions/temp"
 # end

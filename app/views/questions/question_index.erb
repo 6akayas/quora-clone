@@ -1,0 +1,12 @@
+<h2> Question index</h2>
+
+<h3>Add Questions</h3>
+<form action='/users/questions' method="POST" id="question-add">
+    <input type=text placeholder="What's the question?" name="q_title"><br>
+    <input type=text placeholder="Write down further details" name="question_content"><br>
+    <button type='submit'>Submit</button>
+</form>
+
+<% @questions.each do |question| %>
+<a href=/users/<%=question.user_id %>/questions/<%=question.id%>/show><%= question.title%><br></a>
+<%end%>

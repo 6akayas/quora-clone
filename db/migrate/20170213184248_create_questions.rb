@@ -6,6 +6,6 @@ class CreateQuestions < ActiveRecord::Migration
 			q.integer  :user_id, null: false
 
 			q.timestamps
-		end 
+		end
 	end
 end
