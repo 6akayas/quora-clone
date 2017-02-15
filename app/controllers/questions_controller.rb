@@ -1,56 +1,56 @@
 enable :sessions
 
 #index
-post '/users/questions' do
-  @questions = Question.all
-  erb :"questions/index"
-end
-
-# redirection for show
-post '/users/:id/questions/:id' do
-  redirect "/users/#{session[:id]}/questions/#{session[:id]}/show"
+get '/users/questions' do
+    @questions = Question.all
+    erb :"questions/question_index"
 end
 
 #show only users questions
 get '/users/:id/questions/:id/show' do
-  erb :"questions/each_question"
+  @answers = Answer.all 
+  @questions = Question.all
+  @question = Question.find_by(id: params[:id])
+    erb :"questions/each_question"
 end
 
-# redirection for new question
-post '/users/:id/questions/:id/new' do
-  redirect "/users/#{session[:id]}/questions/new"
-end
+###############################################################
 
-#new question
-get '/users/:id/questions/new' do
-  @questions = Question.find_by(id: params[:id])
-  erb :"questions/each_question"
+# # # redirection for new question
+# post '/users/questions/:id/new1' do
+#     redirect "/users/questions/#{session[:id]}/new"
+# end
+
+# #new question
+get '/users/questions/:id/new' do
+    # @questions = Question.find_by(id: params[:id])
+erb :"questions/question_index"
 end
 
 #create
-post 'users/:id/questions' do
-  @questions = current_user.questions.create(content: params[:question])
-  if @questions.save
-    redirect "/users/#{session[:id]}/questions/#{session[:id]}/show"
-    #redirects to show only users question erb
-  else
-    @error = "Invalid question format"
-    redirect "/users/#{session[:id]}/questions/new"
-  end
+post '/users/questions' do
+    @questions = current_user.questions.new(title: params[:q_title], body: params[:question_content])
+    # @questions = Question.new(params[:question])
+    if @questions.save
+        # session[:id] = user.id
+        redirect '/users/questions'
+        #   #redirects to show only users question erb
+    else
+        @error = "Invalid question format"
+        redirect '/'
+    end
 end
+
+################################################################
 
 #edit
-get '/users/:id/questions/edit' do
-  # erb : edit page
-end
-
-#update
-post '/users/:id/questions' do
-	redirect to '/users/questions'
-end
+# get '/users/:id/questions/edit' do
+#     # erb : edit page
+# end
+#
+# #update
+# post '/users/:id/questions' do
+#     redirect to '/users/questions'
+# end
 
 #delete
-delete '/users/:id/questions' do
-  question.delete
-  erb :"sessions/temp"
-end

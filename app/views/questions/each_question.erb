@@ -1,11 +1,23 @@
 
 <!-- Make it a page that connects to a user's question -->
-<form><input ID="back-btn" type="button" value="Back" onClick="history.go(-1);return true;"></FORM>
 
+<% selected_quest = @questions.find_by(id: @question.id) %>
+<h2> Title </h2>
+<%= selected_quest.title %> <br />
 <h2> Question </h2>
+<%= selected_quest.body %> <br /><br />
 
-<div id="question-each">
-<% @questions.each do |question| %>
-<a href=<%= question_url(question)%>><%= question.title %><br></a>
+<h3>Add Answer</h3>
+<form action='/questions/<%=@question.id%>/answers'method="POST" id="answer-add">
+    <input type=text placeholder="What's the answer?" name="a_title"><br>
+    <input type=text placeholder="Write down further details" name="answer_content"><br>
+    <button type='submit'>Submit</button>
+</form>
+
+<% @answers.each do |answer| %>
+<h3> Answer:</h3>
+<%= answer.body%><br></a>
 <%end%>
-</div>
+
+
+<form><input ID="back-btn" type="button" value="Back" onClick="history.go(-1);return true;"></FORM>
